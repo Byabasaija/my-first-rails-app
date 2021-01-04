@@ -1,0 +1,267 @@
+  [1m[35m (17.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (124.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (117.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCars (20210104125026)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "cars" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "make" varchar, "model" varchar, "year" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210104125026"]]
+  [1m[36mTRANSACTION (157.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-01-04 12:51:41.841990"], ["updated_at", "2021-01-04 12:51:41.841990"]]
+  [1m[36mTRANSACTION (135.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/cars" for ::1 at 2021-01-04 15:54:57 +0300
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CarsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cars/index.html.erb within layouts/application
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  ↳ app/views/cars/index.html.erb:16
+  Rendered cars/index.html.erb within layouts/application (Duration: 8.2ms | Allocations: 1249)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/pascal-byabasaija/Desktop/Microverse/first-rails/my_first_rails_app/public/packs
+[Webpacker] Hash: 415a948d492e21802f43
+Version: webpack 4.44.2
+Time: 2218ms
+Built at: 01/04/2021 3:55:02 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-d5a3c3b4dce84b5eb605.js    125 KiB  application  [emitted] [immutable]  application
+js/application-d5a3c3b4dce84b5eb605.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-d5a3c3b4dce84b5eb605.js js/application-d5a3c3b4dce84b5eb605.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 492 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+  Rendered layout layouts/application.html.erb (Duration: 5526.3ms | Allocations: 21512)
+Completed 200 OK in 5588ms (Views: 5552.1ms | ActiveRecord: 0.2ms | Allocations: 25385)
+
+
+Started GET "/cars/new" for ::1 at 2021-01-04 15:56:41 +0300
+Processing by CarsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cars/new.html.erb within layouts/application
+  Rendered cars/_form.html.erb (Duration: 142.4ms | Allocations: 6890)
+  Rendered cars/new.html.erb within layouts/application (Duration: 144.1ms | Allocations: 7238)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 150.0ms | Allocations: 10168)
+Completed 200 OK in 162ms (Views: 150.8ms | ActiveRecord: 0.9ms | Allocations: 14659)
+
+
+Started POST "/cars" for ::1 at 2021-01-04 15:57:35 +0300
+Processing by CarsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "car"=>{"make"=>"Benz", "model"=>"Horse power", "year"=>"2021"}, "commit"=>"Create Car"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/cars_controller.rb:30:in `block in create'
+  [1m[36mCar Create (0.4ms)[0m  [1m[32mINSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["make", "Benz"], ["model", "Horse power"], ["year", 2021], ["created_at", "2021-01-04 12:57:35.280216"], ["updated_at", "2021-01-04 12:57:35.280216"]]
+  ↳ app/controllers/cars_controller.rb:30:in `block in create'
+  [1m[36mTRANSACTION (380.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/cars_controller.rb:30:in `block in create'
+Redirected to http://localhost:3000/cars/1
+Completed 302 Found in 397ms (ActiveRecord: 381.3ms | Allocations: 5066)
+
+
+Started GET "/cars/1" for ::1 at 2021-01-04 15:57:35 +0300
+Processing by CarsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCar Load (0.3ms)[0m  [1m[34mSELECT "cars".* FROM "cars" WHERE "cars"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cars_controller.rb:67:in `set_car'
+  Rendering layout layouts/application.html.erb
+  Rendering cars/show.html.erb within layouts/application
+  Rendered cars/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 294)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 3262)
+Completed 200 OK in 16ms (Views: 5.9ms | ActiveRecord: 0.3ms | Allocations: 6609)
+
+
+Started GET "/cars/1/edit" for ::1 at 2021-01-04 15:58:19 +0300
+Processing by CarsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCar Load (0.1ms)[0m  [1m[34mSELECT "cars".* FROM "cars" WHERE "cars"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cars_controller.rb:67:in `set_car'
+  Rendering layout layouts/application.html.erb
+  Rendering cars/edit.html.erb within layouts/application
+  Rendered cars/_form.html.erb (Duration: 2.0ms | Allocations: 910)
+  Rendered cars/edit.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1167)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | Allocations: 4824)
+Completed 200 OK in 15ms (Views: 11.5ms | ActiveRecord: 0.1ms | Allocations: 5901)
+
+
+Started PATCH "/cars/1" for ::1 at 2021-01-04 15:58:21 +0300
+Processing by CarsController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "car"=>{"make"=>"Benz", "model"=>"Horse power", "year"=>"2021"}, "commit"=>"Update Car", "id"=>"1"}
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT "cars".* FROM "cars" WHERE "cars"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cars_controller.rb:67:in `set_car'
+Redirected to http://localhost:3000/cars/1
+Completed 302 Found in 6ms (ActiveRecord: 0.2ms | Allocations: 1111)
+
+
+Started GET "/cars/1" for ::1 at 2021-01-04 15:58:22 +0300
+Processing by CarsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCar Load (0.1ms)[0m  [1m[34mSELECT "cars".* FROM "cars" WHERE "cars"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cars_controller.rb:67:in `set_car'
+  Rendering layout layouts/application.html.erb
+  Rendering cars/show.html.erb within layouts/application
+  Rendered cars/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 108)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 3129)
+Completed 200 OK in 7ms (Views: 4.5ms | ActiveRecord: 0.1ms | Allocations: 4069)
+
+
+Started GET "/cars" for ::1 at 2021-01-04 15:58:24 +0300
+Processing by CarsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cars/index.html.erb within layouts/application
+  [1m[36mCar Load (0.1ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  ↳ app/views/cars/index.html.erb:16
+  Rendered cars/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 823)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.5ms | Allocations: 4462)
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 0.1ms | Allocations: 4867)
+
+
+Started GET "/cars/new" for ::1 at 2021-01-04 15:58:30 +0300
+Processing by CarsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cars/new.html.erb within layouts/application
+  Rendered cars/_form.html.erb (Duration: 3.0ms | Allocations: 845)
+  Rendered cars/new.html.erb within layouts/application (Duration: 3.6ms | Allocations: 953)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.3ms | Allocations: 4589)
+Completed 200 OK in 13ms (Views: 12.1ms | ActiveRecord: 0.0ms | Allocations: 4985)
+
+
+Started POST "/cars" for ::1 at 2021-01-04 15:59:02 +0300
+Processing by CarsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "car"=>{"make"=>"Lambogini", "model"=>"2235", "year"=>"2021"}, "commit"=>"Create Car"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/cars_controller.rb:30:in `block in create'
+  [1m[36mCar Create (2.1ms)[0m  [1m[32mINSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["make", "Lambogini"], ["model", "2235"], ["year", 2021], ["created_at", "2021-01-04 12:59:02.163403"], ["updated_at", "2021-01-04 12:59:02.163403"]]
+  ↳ app/controllers/cars_controller.rb:30:in `block in create'
+  [1m[36mTRANSACTION (225.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/cars_controller.rb:30:in `block in create'
+Redirected to http://localhost:3000/cars/2
+Completed 302 Found in 242ms (ActiveRecord: 227.9ms | Allocations: 4795)
+
+
+Started GET "/cars/2" for ::1 at 2021-01-04 15:59:02 +0300
+Processing by CarsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT "cars".* FROM "cars" WHERE "cars"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/cars_controller.rb:67:in `set_car'
+  Rendering layout layouts/application.html.erb
+  Rendering cars/show.html.erb within layouts/application
+  Rendered cars/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 106)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | Allocations: 3127)
+Completed 200 OK in 8ms (Views: 5.4ms | ActiveRecord: 0.2ms | Allocations: 4064)
+
+
+Started GET "/cars" for ::1 at 2021-01-04 15:59:07 +0300
+Processing by CarsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cars/index.html.erb within layouts/application
+  [1m[36mCar Load (0.1ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  ↳ app/views/cars/index.html.erb:16
+  Rendered cars/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 918)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | Allocations: 4588)
+Completed 200 OK in 12ms (Views: 11.5ms | ActiveRecord: 0.1ms | Allocations: 4986)
+
+
+Started GET "/cars/new" for ::1 at 2021-01-04 15:59:10 +0300
+Processing by CarsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cars/new.html.erb within layouts/application
+  Rendered cars/_form.html.erb (Duration: 2.0ms | Allocations: 845)
+  Rendered cars/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 953)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7.8ms | Allocations: 3973)
+Completed 200 OK in 9ms (Views: 8.6ms | ActiveRecord: 0.0ms | Allocations: 4369)
+
+
+Started POST "/cars" for ::1 at 2021-01-04 15:59:54 +0300
+Processing by CarsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "car"=>{"make"=>"Maserati", "model"=>"43532", "year"=>"2021"}, "commit"=>"Create Car"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/cars_controller.rb:30:in `block in create'
+  [1m[36mCar Create (0.5ms)[0m  [1m[32mINSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["make", "Maserati"], ["model", "43532"], ["year", 2021], ["created_at", "2021-01-04 12:59:54.813866"], ["updated_at", "2021-01-04 12:59:54.813866"]]
+  ↳ app/controllers/cars_controller.rb:30:in `block in create'
+  [1m[36mTRANSACTION (340.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/cars_controller.rb:30:in `block in create'
+Redirected to http://localhost:3000/cars/3
+Completed 302 Found in 351ms (ActiveRecord: 341.4ms | Allocations: 5026)
+
+
+Started GET "/cars/3" for ::1 at 2021-01-04 15:59:55 +0300
+Processing by CarsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCar Load (0.1ms)[0m  [1m[34mSELECT "cars".* FROM "cars" WHERE "cars"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/cars_controller.rb:67:in `set_car'
+  Rendering layout layouts/application.html.erb
+  Rendering cars/show.html.erb within layouts/application
+  Rendered cars/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 106)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 3127)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.1ms | Allocations: 4065)
+
+
+Started GET "/cars" for ::1 at 2021-01-04 16:11:13 +0300
+Processing by CarsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cars/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/cars/index.html.erb:16
+  [1m[36mCar Load (16.5ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  ↳ app/views/cars/index.html.erb:16
+  Rendered cars/index.html.erb within layouts/application (Duration: 102.8ms | Allocations: 1820)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 447.3ms | Allocations: 4857)
+Completed 200 OK in 495ms (Views: 448.2ms | ActiveRecord: 47.6ms | Allocations: 5261)
+
+
+Started GET "/cars/new" for ::1 at 2021-01-04 16:11:17 +0300
+Processing by CarsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cars/new.html.erb within layouts/application
+  Rendered cars/_form.html.erb (Duration: 2.2ms | Allocations: 845)
+  Rendered cars/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 953)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.8ms | Allocations: 4604)
+Completed 200 OK in 15ms (Views: 14.5ms | ActiveRecord: 0.0ms | Allocations: 5000)
+
+
+Started POST "/cars" for ::1 at 2021-01-04 16:11:40 +0300
+Processing by CarsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "car"=>{"make"=>"Toyota", "model"=>"525342", "year"=>"2021"}, "commit"=>"Create Car"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/cars_controller.rb:30:in `block in create'
+  [1m[36mCar Create (207.4ms)[0m  [1m[32mINSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["make", "Toyota"], ["model", "525342"], ["year", 2021], ["created_at", "2021-01-04 13:11:40.388807"], ["updated_at", "2021-01-04 13:11:40.388807"]]
+  ↳ app/controllers/cars_controller.rb:30:in `block in create'
+  [1m[36mTRANSACTION (133.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/cars_controller.rb:30:in `block in create'
+Redirected to http://localhost:3000/cars/4
+Completed 302 Found in 353ms (ActiveRecord: 341.4ms | Allocations: 4803)
+
+
+Started GET "/cars/4" for ::1 at 2021-01-04 16:11:40 +0300
+Processing by CarsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT "cars".* FROM "cars" WHERE "cars"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cars_controller.rb:67:in `set_car'
+  Rendering layout layouts/application.html.erb
+  Rendering cars/show.html.erb within layouts/application
+  Rendered cars/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 106)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 3128)
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 0.2ms | Allocations: 4083)
+
+
